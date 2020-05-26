@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    background-color: #232323;
+	color: #ffffff !important;
+	font-family: 'Poppins', sans-serif;
+}
+
+.flex-container {
+    height: calc(100% - 150px);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    max-width: 100vw;
+    max-height: 100vh;
+    color: #ffffff !important;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.div-send-msg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: black !important;
+}
+
+.btn-down {
+    z-index: 2;
+    position: fixed; 
+    bottom: 0px;
+    width: 100%;
+    height: auto;
+}
+
+.MuiInput-underline,
+.MuiInput-underline:focus,
+.MuiInput-underline:active,
+.MuiInput-underline:hover {
+  border-bottom: 1px solid #5867dd !important;
+}
+
+*:focus {
+    outline: none !important;
+}

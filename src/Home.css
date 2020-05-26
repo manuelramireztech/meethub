@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+h1 {
+	margin: 0;
+	text-align: center;
+	color: #ffffff;
+}
+
+html, body {
+  	height: 100%;
+}
+body {
+	margin: 0;
+	text-align: center;
+	background-color: #232323;
+	color: #ffffff;
+	font-family: 'Poppins', sans-serif;
+}
+
+.homecontainer {
+	padding-top: 50px;
+	margin: auto;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+a, area, button, inputComponent, [role='button'], input:not([type='range']), label, select, summary, textarea {
+    -ms-touch-action: manipulation;
+	touch-action: manipulation;
+	color: #ffffff;
+	border: #ffffff !important;
+}
+
+.MuiInput-underline,
+.MuiInput-underline:focus,
+.MuiInput-underline:active,
+.MuiInput-underline:hover {
+  border-bottom: 1px solid #5867dd !important;
+}
+
+*:focus {
+    outline: none !important;
+}
