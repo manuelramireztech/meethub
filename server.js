@@ -1,16 +1,20 @@
-const fs = require('fs')
-const express = require('express')
-const http = require('http')
-var cors = require('cors')
-const app = express()
-const bodyParser = require('body-parser')
-const path = require("path")
+const fs = require('fs');
+const express = require('express');
+const http = require('http');
+var cors = require('cors');
+const app = express();
+const bodyParser = require('body-parser');
+const path = require("path");
+const mongoose = require("mongoose");
 
 var server = http.createServer(app);
 var io = require('socket.io')(server);
+const User = require("./src/models");
 
-app.use(cors())
-app.use(bodyParser.json())
+// mongoose.connect(process.env.MONGODB_URI ||)
+
+app.use(cors());
+app.use(bodyParser.json());
 
 if(process.env.NODE_ENV==='production'){
 	app.use(express.static(__dirname+"/build"))

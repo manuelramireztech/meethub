@@ -59,7 +59,7 @@ class Video extends Component {
 			message: "",
 			newmessages: 0,
 			askForUsername: true,
-			username: faker.internet.userName(),
+			username: faker.internet.Username(),
 		}
 		connections = {}
 
