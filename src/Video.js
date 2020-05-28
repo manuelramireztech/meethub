@@ -563,7 +563,7 @@ class Video extends Component {
 			textArea.select()
 			try {
 				document.execCommand('copy')
-				message.success("Link copied to clipboard!")
+				message.success("Link was copied to share!")
 			} catch (err) {
 				message.error("Failed to copy")
 			}
@@ -571,7 +571,7 @@ class Video extends Component {
 			return
 		}
 		navigator.clipboard.writeText(text).then(function () {
-			message.success("Link copied to clipboard!")
+			message.success("Link was copied to share!")
 		}, function (err) {
 			message.error("Failed to copy")
 		})
@@ -673,8 +673,8 @@ class Video extends Component {
 									borderColor: "#121212",
 									margin: "10px",
 									objectFit: "fill",
-									width: "100%",
-									height: "100%"
+									width: "60%",
+								    height: "100%"
 								}}></video>
 							</Row>
 						</div>
