@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Input, Button } from '@material-ui/core';
 import "./Home.css"
+import IconButton from '@material-ui/core/IconButton';
+import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
+import Duo from '@material-ui/icons/Duo';
 
 
 class Home extends Component {
@@ -33,7 +36,9 @@ class Home extends Component {
 		return (
 			<div className="homecontainer">
 				<div>
-					<h1 style={{ fontSize: "45px", marginBottom: "20px" }}>meethub</h1>
+					<h1 style={{ fontSize: "45px", marginBottom: "20px" , marginTop: "20px" }}><IconButton style={{ color: "#ffffff",fontSize: "45px !important", backgroundColor: "#5867dd"}}>
+					<Duo />
+					</IconButton> meethub</h1>
 					<p style={{ fontWeight: "200" }}>Video call application with react and node.</p>
 				</div>
 
@@ -43,7 +48,9 @@ class Home extends Component {
 				}}>
 					<p style={{ marginBottom: "20px" , paddingRight: "50px" }}>Start or join a video call</p>
 					<Input placeholder="Create a URL to meet" onChange={e => this.handleChange(e)} />
-					<Button variant="contained" color="primary" onClick={this.join} style={{ margin: "20px" }}>Go</Button>
+					<IconButton style={{ color: "#ffffff", backgroundColor: "#5867dd", margin: "0 10px 0 10px" }} onClick={this.join}>
+					<ArrowForwardIos />
+					</IconButton>
 				</div>
 			</div>
 		)

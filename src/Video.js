@@ -13,6 +13,7 @@ import ScreenShareIcon from '@material-ui/icons/ScreenShare';
 import StopScreenShareIcon from '@material-ui/icons/StopScreenShare';
 import CallEndIcon from '@material-ui/icons/CallEnd';
 import ChatIcon from '@material-ui/icons/Chat';
+import FileCopy from '@material-ui/icons/FileCopy';
 
 import { message } from 'antd';
 import 'antd/dist/antd.css';
@@ -562,7 +563,7 @@ class Video extends Component {
 			textArea.select()
 			try {
 				document.execCommand('copy')
-				message.success("Link copied to clipboard!")
+				message.success("Link was copied to share!")
 			} catch (err) {
 				message.error("Failed to copy")
 			}
@@ -570,7 +571,7 @@ class Video extends Component {
 			return
 		}
 		navigator.clipboard.writeText(text).then(function () {
-			message.success("Link copied to clipboard!")
+			message.success("Link was copied to share!")
 		}, function (err) {
 			message.error("Failed to copy")
 		})
@@ -590,7 +591,26 @@ class Video extends Component {
 		})
 	}
 
+	isChromeOrFirefox = function() {
+		var userAgent = (navigator && navigator.userAgent || '').toLowerCase()
+		var vendor = (navigator && navigator.vendor || '').toLowerCase()
+		var matchChrome = /google inc/.test(vendor) ? userAgent.match(/(?:chrome|crios)\/(\d+)/) : null
+		var matchFirefox = userAgent.match(/(?:firefox|fxios)\/(\d+)/)
+		return matchChrome !== null || matchFirefox !== null
+	}
+
 	render() {
+		
+		if (this.isChromeOrFirefox() === false) {
+			return (
+				<div style={{
+					background: "white", width: "30%", height: "auto", padding: "20px", minWidth: "400px",
+					textAlign: "center", margin: "auto", marginTop: "50px", justifyContent: "center"
+				}}>
+					<h1>Use Chrome or Firefox</h1>
+				</div>
+			)
+		}
 		return (
 			<div>
 				{this.state.askForUsername === true ?
@@ -640,6 +660,9 @@ class Video extends Component {
 									<ChatIcon />
 								</IconButton>
 							</Badge>
+							<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px" }} onClick={this.copyUrl}>
+								<FileCopy />
+							</IconButton>
 						</div>
 
 						<Modal show={this.state.showModal} onHide={this.closeChat} style={{ zIndex: "999999", color: "#121212" }}>
@@ -661,17 +684,7 @@ class Video extends Component {
 						</Modal>
 
 						<div className="container">
-							<div style={{ paddingTop: "20px" }}>
-								<Input value={window.location.href} disable="true"></Input>
-								<Button style={{
-									backgroundColor: "#121212",
-									color: "whitesmoke",
-									marginLeft: "20px",
-									marginTop: "10px",
-									width: "120px",
-									fontSize: "10px"
-								}} onClick={this.copyUrl}>Copy invite link</Button>
-							</div>
+						
 
 							<Row id="main" className="flex-container" style={{ margin: 0, padding: 0 }}>
 								<video id="my-video" ref={this.localVideoref} autoPlay muted style={{
@@ -679,8 +692,8 @@ class Video extends Component {
 									borderColor: "#121212",
 									margin: "10px",
 									objectFit: "fill",
-									width: "100%",
-									height: "100%"
+									width: "60%",
+								    height: "100%"
 								}}></video>
 							</Row>
 						</div>
