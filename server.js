@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const db = require("./src/models");
-const Role = db.role;
+
 
 
 db.mongoose
@@ -30,7 +30,7 @@ db.mongoose
   })
   .then(() => {
     console.log("Successfully connect to MongoDB.");
-    initial();
+    // initial();
   })
   .catch(err => {
     console.error("Connection error", err);
@@ -38,43 +38,24 @@ db.mongoose
   });
 
 
-function initial() {
-	console.log(Role);
+// function initial() {
 	
-  Role.estimatedDocumentCount( (err, count) => {
-    if (!err && count === 0) {
-      new Role({
-        name: "user"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
+	
+//   User.estimatedDocumentCount( (err, count) => {
+//     if (!err && count === 0) {
+//       new User({
+//         name: "user"
+//       }).save(err => {
+//         if (err) {
+//           console.log("error", err);
+//         }
 
-        console.log("added 'user' to roles collection");
-      });
+//         console.log("added 'user' to roles collection");
+//       });
 
-      new Role({
-        name: "moderator"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'moderator' to roles collection");
-      });
-
-      new Role({
-        name: "admin"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'admin' to roles collection");
-      });
-    }
-  });
-}
+//     }
+//   });
+// }
 
 require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
