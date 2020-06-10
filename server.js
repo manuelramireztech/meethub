@@ -62,7 +62,7 @@ require("./routes/user.routes")(app);
 
 
 app.get("/", (req, res) => {
-	res.json({ message: "Welcome to bezkoder application." });
+	res.json({ message: "Welcome Anthony" });
   });
 
 if(process.env.NODE_ENV==='production'){
