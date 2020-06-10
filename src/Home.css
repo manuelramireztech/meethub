@@ -12,10 +12,12 @@ html, body {
 body {
 	margin: 0;
 	text-align: center;
-	background-color: #232323;
+	background-color: #1d1d1d !important;
 	color: #ffffff;
 	font-family: 'Poppins', sans-serif;
 }
+
+
 
 .homecontainer {
 	padding-top: 50px;
@@ -23,6 +25,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+	background-color: #1d1d1d !important;
 }
 
 a, area, button, inputComponent, [role='button'], input:not([type='range']), label, select, summary, textarea {
