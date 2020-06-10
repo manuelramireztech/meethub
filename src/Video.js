@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import io from 'socket.io-client';
-import faker from "faker";
+import io from "socket.io-client";
 
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
+import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 import { Input, Button } from '@material-ui/core';
 import VideocamIcon from '@material-ui/icons/Videocam';
 import VideocamOffIcon from '@material-ui/icons/VideocamOff';
@@ -59,8 +59,8 @@ class Video extends Component {
 			messages: [],
 			message: "",
 			newmessages: 0,
-			askForUsername: true,
-			username: faker.internet.Username(),
+			// askForUsername: true,
+			// username: faker.internet.Username(),
 		}
 		connections = {}
 
@@ -563,7 +563,7 @@ class Video extends Component {
 			textArea.select()
 			try {
 				document.execCommand('copy')
-				message.success("Link was copied to share!")
+				message.success("Link copied to clipboard!")
 			} catch (err) {
 				message.error("Failed to copy")
 			}
@@ -571,7 +571,7 @@ class Video extends Component {
 			return
 		}
 		navigator.clipboard.writeText(text).then(function () {
-			message.success("Link was copied to share!")
+			message.success("Link copied to clipboard!")
 		}, function (err) {
 			message.error("Failed to copy")
 		})
@@ -600,8 +600,7 @@ class Video extends Component {
 	}
 
 	render() {
-		
-		if (this.isChromeOrFirefox() === false) {
+		if(this.isChromeOrFirefox() === false){
 			return (
 				<div style={{
 					background: "white", width: "30%", height: "auto", padding: "20px", minWidth: "400px",
@@ -612,62 +611,78 @@ class Video extends Component {
 			)
 		}
 		return (
-			<div>
-				{this.state.askForUsername === true ?
-					<div>
-						<div style={{
-							background: "#232323", width: "30%", height: "auto", padding: "20px", minWidth: "400px",
-							textAlign: "center", margin: "auto", marginTop: "50px", justifyContent: "center"
-						}}>
-							<p style={{ margin: 0, paddingRight: "50px" }}>Set your username</p>
-							<Input placeholder="Username" value={this.state.username} onChange={e => this.handleUsername(e)} />
-							<Button variant="contained" color="primary" onClick={this.connect} style={{ margin: "20px" }}>Connect</Button>
-						</div>
+			// <div>
+			// 	{this.state.askForUsername === true ?
+			// 		<div>
+			// 			<div style={{
+			// 				background: "#1d1d1d", width: "30%", height: "auto", padding: "20px", minWidth: "400px",
+			// 				textAlign: "center", margin: "auto", marginTop: "50px", justifyContent: "center"
+			// 			}}>
+			// 				<p style={{ margin: 0 }}>Turn Off/On Camera & Mic and GO to meet</p>
+			// 				<Input style={{ marginTop: "20px" }} placeholder="Username" value={this.state.username} onChange={e => this.handleUsername(e)} />
+			// 			</div>
+			// 			<div style={{ justifyContent: "center", textAlign: "center", paddingTop: "10px", marginBottom: "80px" }}>
+			// 				<video id="my-video" ref={this.localVideoref} autoPlay muted style={{
+			// 					borderStyle: "solid",
+			// 					borderColor: "#000",
+			// 					backgroundColor: "#000000",
+			// 						// backgroundImage: "",
+			// 					objectFit: "fill",
+			// 					width: "50%",
+			// 					height: "20%"
+			// 				}}></video>
+			// 				</div>
+			// 				<div className="btn-down" style={{ backgroundColor: "#232323", color: "#232323", textAlign: "center", padding: "10px" }}>
+			// 				<IconButton style={{ color: "#fff", backgroundColor: "#323232", margin: "5px", width:"50px", height:"50px" }} onClick={this.handleVideo}>
+			// 					{(this.state.video === true) ? <VideocamIcon /> : <VideocamOffIcon />}
+			// 				</IconButton>
 
-						<div style={{ justifyContent: "center", textAlign: "center", paddingTop: "40px" }}>
-							<video id="my-video" ref={this.localVideoref} autoPlay muted style={{
-								borderStyle: "solid",
-								borderColor: "#121212",
-								objectFit: "fill",
-								width: "60%",
-								height: "30%"
-							}}></video>
-						</div>
-					</div>
-					:
+			// 				<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px", width:"50px", height:"50px" }} onClick={this.handleAudio}>
+			// 					{this.state.audio === true ? <MicIcon /> : <MicOffIcon />}
+			// 				</IconButton>
+
+			// 				<IconButton style={{ color: "#ffffff", backgroundColor: "#5A6BDA", fontSize: "14.7px", margin: "5px", width:"50px", height:"50px" }} onClick={this.connect}>
+			// 					GO
+			// 				</IconButton>
+			// 			</div>
+
+						
+						
+			// 		</div>
+			// 		:
 					<div>
-						<div className="btn-down" style={{ backgroundColor: "#232323", color: "#232323", textAlign: "center" }}>
-							<IconButton style={{ color: "#fff", backgroundColor: "#323232", margin: "5px" }} onClick={this.handleVideo}>
+						<div className="btn-down" style={{ backgroundColor: "#232323", color: "#232323", textAlign: "center", padding: "10px" }}>
+							<IconButton style={{ color: "#fff", backgroundColor: "#323232", margin: "5px", width:"50px", height:"50px" }} onClick={this.handleVideo}>
 								{(this.state.video === true) ? <VideocamIcon /> : <VideocamOffIcon />}
 							</IconButton>
 
-							<IconButton style={{ color: "#ffffff", backgroundColor: "#da3c3f", margin: "5px" }} onClick={this.handleEndCall}>
+							<IconButton style={{ color: "#ffffff", backgroundColor: "#da3c3f", margin: "5px", width:"50px", height:"50px" }} onClick={this.handleEndCall}>
 								<CallEndIcon />
 							</IconButton>
 
-							<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px" }} onClick={this.handleAudio}>
+							<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px", width:"50px", height:"50px" }} onClick={this.handleAudio}>
 								{this.state.audio === true ? <MicIcon /> : <MicOffIcon />}
 							</IconButton>
 
 							{this.state.screenAvailable === true ?
-								<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px" }} onClick={this.handleScreen}>
+								<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px", width:"50px", height:"50px" }} onClick={this.handleScreen}>
 									{this.state.screen === true ? <ScreenShareIcon /> : <StopScreenShareIcon />}
 								</IconButton>
 								: null}
 
 							<Badge badgeContent={this.state.newmessages} max={999} color="secondary" onClick={this.openChat}>
-								<IconButton style={{ color: "#ffffff", backgroundColor: "#323232"  }} onClick={this.openChat}>
+								<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px", width:"50px", height:"50px"  }} onClick={this.openChat}>
 									<ChatIcon />
 								</IconButton>
 							</Badge>
-							<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px" }} onClick={this.copyUrl}>
+							<IconButton style={{ color: "#ffffff", backgroundColor: "#5a6bda", margin: "5px", width:"50px", height:"50px" }} onClick={this.copyUrl}>
 								<FileCopy />
 							</IconButton>
 						</div>
 
 						<Modal show={this.state.showModal} onHide={this.closeChat} style={{ zIndex: "999999", color: "#121212" }}>
 							<Modal.Header closeButton>
-								<Modal.Title>Chat Room</Modal.Title>
+								<Modal.Title>GROUP CHAT</Modal.Title>
 							</Modal.Header>
 							<Modal.Body style={{ overflow: "auto", color: "#121212", overflowY: "auto", height: "400px" }} >
 								{this.state.messages.length > 0 ? this.state.messages.map((item, index) => (
@@ -678,18 +693,18 @@ class Video extends Component {
 								)) : <p>No message yet</p>}
 							</Modal.Body>
 							<Modal.Footer className="div-send-msg">
-								<Input placeholder="Message" value={this.state.message} onChange={e => this.handleMessage(e)} />
-								<Button variant="contained" color="primary" onClick={this.sendMessage}>Send</Button>
-							</Modal.Footer>
+						<Input style={{ color: "#ffffff" }} placeholder="Type here..." value={this.state.message} onChange={e => this.handleMessage(e)} />
+						<IconButton style={{ color: "#ffffff", backgroundColor: "#5867dd", margin: "0 10px 0 10px" }} onClick={this.sendMessage}>
+					<ArrowForwardIos />
+					</IconButton>
+					</Modal.Footer>
 						</Modal>
-
 						<div className="container">
-						
-
 							<Row id="main" className="flex-container" style={{ margin: 0, padding: 0 }}>
 								<video id="my-video" ref={this.localVideoref} autoPlay muted style={{
 									borderStyle: "solid",
-									borderColor: "#121212",
+									borderColor: "#000",
+							        // backgroundImage: "url(https://dimensionus.com/wp-content/uploads/2017/07/user-avatar-dark.jpg)",
 									margin: "10px",
 									objectFit: "fill",
 									width: "60%",
@@ -698,8 +713,9 @@ class Video extends Component {
 							</Row>
 						</div>
 					</div>
-				}
-			</div>
+					
+				// }
+			// </div>
 		)
 	}
 }
