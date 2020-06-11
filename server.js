@@ -10,6 +10,7 @@ const mongoose = require("mongoose");
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 const User = require("./models/user.model");
+// const routes = require("./src/App");
 
 const dbConfig = require("./config/db.config");
 
@@ -64,11 +65,12 @@ db.mongoose.connect(
 
 require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
+// require("./src/App")(app);
 
 
-app.get("/", (req, res) => {
-	res.json({ message: "Welcome Anthony" });
-  });
+// app.get("/", (req, res) => {
+// 	res.json({ message: "Welcome Anthony" });
+//   });
 
 if(process.env.NODE_ENV==='production'){
 	app.use(express.static(__dirname+"/build"))
@@ -76,7 +78,7 @@ if(process.env.NODE_ENV==='production'){
 		res.sendFile(path.join(__dirname+"/build/index.html"))
 	})
 }
-app.set('port', (process.env.PORT || 3000))
+app.set('port', (process.env.PORT || 3001))
 
 
 connections = {}
