@@ -11,6 +11,8 @@ var server = http.createServer(app);
 var io = require('socket.io')(server);
 const User = require("./src/models/user.model");
 
+const dbConfig = require("./config/db.config");
+
 const corsOptions = {
 	origin: "http://localhost:8081"
 };
@@ -23,19 +25,22 @@ const db = require("./src/models");
 
 
 
-db.mongoose
-  .connect(`mongodb://localhost/meetHubUsers_db`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => {
-    console.log("Successfully connect to MongoDB.");
-    // initial();
-  })
-  .catch(err => {
-    console.error("Connection error", err);
-    process.exit();
-  });
+db.mongoose.connect(
+    process.env.MONGODB_URI || `mongodb://${dbConfig.HOST}/${dbConfig.DB}`,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }
+)
+    .then(() => {
+    console.log("sucessfully connect to MongoDB");
+
+    })
+    .catch(err => {
+    console.log("connection error", err);
+     process.exit();
+
+    });
 
 
 // function initial() {
