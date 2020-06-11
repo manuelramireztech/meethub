@@ -37,7 +37,7 @@
     "standard": "^14.3.3"
   },
   "scripts": {
-    "dev": "concurrently -n 'server,client' -c 'red,green'  \"nodemon server.js\" \"NODE_ENV=dev PORT=8000 react-scripts start\"",
+    "dev": "concurrently -n 'server,client' -c 'red,green' \"nodemon server.js\" \"SET NODE_ENV=dev & SET PORT=8000 & react-scripts start\"",
     "server": "NODE_ENV=production nodemon server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
