@@ -5,7 +5,7 @@ const server = require("http").Server(app);
 const io = require("socket.io")(server);
 
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
+
 
 const http = require('http');
 var cors = require('cors');
@@ -13,8 +13,7 @@ const bodyParser = require('body-parser');
 const path = require("path");
 const mongoose = require("mongoose");
 
-var server = http.createServer(app);
-var io = require('socket.io')(server);
+
 const User = require("./models/user.model");
 // const routes = require("./src/App");
 
