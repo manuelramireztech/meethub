@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 
 var server = http.createServer(app);
 var io = require('socket.io')(server);
-const User = require("./src/models/user.model");
+const User = require("./models/user.model");
 
 const dbConfig = require("./config/db.config");
 
@@ -21,7 +21,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const db = require("./src/models");
+const db = require("./models");
 
 
 
