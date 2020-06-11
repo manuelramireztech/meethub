@@ -4,7 +4,12 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
 
-   
+    userName: {
+    type: String,
+    trim: true,
+    unique: true
+    },
+
     firstName: {
         type: String,
         trim: true,
@@ -28,13 +33,11 @@ const UserSchema = new Schema({
         required: "password is required",
         validate: [({ length }) => length >=6, "password must be at least 6 Characters."]
     },
+    isVerified: {
+        type: Boolean,
+        default: false
+    }
     
-    roles: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Role"
-        }
-    ]
 });
 
 const User = mongoose.model("User", UserSchema);
@@ -42,3 +45,4 @@ const User = mongoose.model("User", UserSchema);
 module.exports = User;
 
 
+// type: mongoose.Schema.Types.ObjectId
