@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Input, Button } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 import "./Home.css"
 import IconButton from '@material-ui/core/IconButton';
-import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 import Duo from '@material-ui/icons/Duo';
 
 
@@ -41,18 +42,42 @@ class Home extends Component {
 					</IconButton> meethub</h1>
 					<p style={{ fontWeight: "200" }}>Video call application with react and node.</p>
 				</div>
+				<p style={{ fontWeight: "200", marginTop: "50px" }}>Hello! "USERNAME"</p>
 
 				<div style={{
-					background: "#232323", color:"#fff", width: "30%", height: "auto", padding: "20px", minWidth: "400px",
-					textAlign: "center", margin: "auto", marginTop: "100px"
+					background: "#1d1d1d", color:"#fff", width: "30%", height: "auto", padding: "20px", minWidth: "200px",
+					textAlign: "center", margin: "auto", marginTop: "40px"
 				}}>
-					<p style={{ marginBottom: "20px" , paddingRight: "50px" }}>Start or join a video call</p>
-					<Input placeholder="Create a URL to meet" onChange={e => this.handleChange(e)} />
-					<IconButton style={{ color: "#ffffff", backgroundColor: "#5867dd", margin: "0 10px 0 10px" }} onClick={this.join}>
-					<ArrowForwardIos />
-					</IconButton>
-				</div>
+					<p style={{ marginBottom: "30px"}}>Start or join a video call</p>
+      
+					
+            <Grid item xs={12}>
+              <TextField
+                autoComplete="fname"
+                name="firstName"
+                variant="filled"
+                required
+                fullWidth
+                id="firstName"
+                label="Create a URL to meet"
+			    onChange={e => this.handleChange(e)}
+                autoFocus
+              />
+			</Grid>
+			<Button style={{
+					 marginTop: "30px"
+				}}
+            type="submit"
+            fullWidth
+            variant="contained"
+						color="primary"
+						onClick={this.join}
+          >
+            Join now
+          </Button>
+		    </div>
 			</div>
+			
 		)
 	}
 }

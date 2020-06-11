@@ -1,0 +1,36 @@
+
+h1 {
+	margin: 0;
+	text-align: center;
+	color: #ffffff;
+}
+
+html, body {
+      height: 100%;
+      background-color: #1d1d1d !important;
+}
+body {
+	margin: 0;
+	text-align: center;
+	background-color: #1d1d1d;
+	color: #ffffff;
+}
+
+.homecontainer {
+	padding-top: 50px;
+	margin: auto;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+a, p, area, button, inputComponent, [role='button'], input:not([type='range']), label, select, summary, textarea {
+    -ms-touch-action: manipulation;
+	touch-action: manipulation;
+	color: #ffffff !important;
+	border: #ffffff !important;
+}
+
+.MuiInputBase-formControl {
+    border: 1px solid #545454 !important;
+  }

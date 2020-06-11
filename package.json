@@ -19,7 +19,7 @@
     "faker": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.16",
-    "nodemon": "^2.0.4",
+    "nodemon": "^2.0.2",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-css-grid": "^2.0.0-0",

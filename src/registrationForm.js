@@ -1,23 +1,22 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import Duo from '@material-ui/icons/Duo';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import "./registrationForm.css";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="https://ucf-meethub.herokuapp.com/">
         MeetHub
       </Link>{' '}
       {new Date().getFullYear()}
@@ -52,10 +51,11 @@ export default function SignUp() {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+      <h1 style={{ fontSize: "45px", marginBottom: "20px" , marginTop: "40px" }}><IconButton style={{ color: "#ffffff",fontSize: "45px !important", backgroundColor: "#5867dd"}}>
+					<Duo />
+					</IconButton> meethub</h1>
+					<p style={{ fontWeight: "200" }}>Video call application with react and node.</p>
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
@@ -65,7 +65,7 @@ export default function SignUp() {
               <TextField
                 autoComplete="fname"
                 name="firstName"
-                variant="outlined"
+                variant="filled"
                 required
                 fullWidth
                 id="firstName"
@@ -75,7 +75,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="outlined"
+                variant="filled"
                 required
                 fullWidth
                 id="lastName"
@@ -84,9 +84,9 @@ export default function SignUp() {
                 autoComplete="lname"
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                variant="filled"
                 required
                 fullWidth
                 id="userName"
@@ -96,7 +96,7 @@ export default function SignUp() {
             </Grid>  
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                variant="filled"
                 required
                 fullWidth
                 id="email"
@@ -107,7 +107,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                variant="filled"
                 required
                 fullWidth
                 name="password"
@@ -115,12 +115,6 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
               />
             </Grid>
           </Grid>
@@ -133,9 +127,9 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
-          <Grid container justify="flex-end">
+          <Grid component="main" maxWidth="xs">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>

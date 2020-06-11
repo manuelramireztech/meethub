@@ -1,8 +1,14 @@
 const fs = require('fs');
-const http = require('http');
-const express = require('express');
-var cors = require('cors');
+const express = require("express");
 const app = express();
+const server = require("http").Server(app);
+const io = require("socket.io")(server);
+
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
+
+const http = require('http');
+var cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require("path");
 const mongoose = require("mongoose");

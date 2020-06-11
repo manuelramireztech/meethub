@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import Video from './Video'
 import Home from './Home'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Registration from './registrationForm'
+import Login from './loginForm'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 class App extends Component {
 	render() {
@@ -11,8 +13,10 @@ class App extends Component {
 					{/* <Link to="/">home</Link>
 					<Link to="/:url"></Link> */}
 					<Switch>
-						<Route exact path="/" component={Home} />
-						<Route exact path="/:url" component={Video} />
+						<Route path="/" exact component={Login} />
+						<Route path="/Registration" component={Registration} />
+						<Route path="/Home" component={Home} />
+						<Route path="/:url" component={Video} />
 					</Switch>
 				</Router>
 			</div>

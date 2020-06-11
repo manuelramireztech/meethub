@@ -1,5 +1,6 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import Duo from '@material-ui/icons/Duo';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -8,16 +9,16 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import "./loginForm.css";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="https://ucf-meethub.herokuapp.com/">
         MeetHub
       </Link>{' '}
       {new Date().getFullYear()}
@@ -27,6 +28,7 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
+  
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -44,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  formControl: {
+    color: "primary"
+  },
+  
 }));
 
 export default function SignIn() {
@@ -51,17 +57,19 @@ export default function SignIn() {
 
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
+    <CssBaseline />
+    <h1 style={{ fontSize: "45px", marginBottom: "20px" , marginTop: "40px" }}><IconButton style={{ color: "#ffffff",fontSize: "45px !important", backgroundColor: "#5867dd"}}>
+        <Duo />
+        </IconButton> meethub</h1>
+        <p style={{ fontWeight: "200" }}>Video call application with react and node.</p>
+    <div className={classes.paper}>
+        
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
-            variant="outlined"
+            variant="filled"
             margin="normal"
             required
             fullWidth
@@ -72,7 +80,7 @@ export default function SignIn() {
             autoFocus
           />
           <TextField
-            variant="outlined"
+            variant="filled"
             margin="normal"
             required
             fullWidth
@@ -83,7 +91,9 @@ export default function SignIn() {
             autoComplete="current-password"
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox value="remember" color="white" style ={{
+              color: "#ffffff",
+            }} />}
             label="Remember me"
           />
           <Button
@@ -95,14 +105,9 @@ export default function SignIn() {
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
+          <Grid component="main" maxWidth="xs">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/Registration" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
