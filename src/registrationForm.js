@@ -45,6 +45,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const router = require("express").Router();
+
+// signUpForm.on("submit", function (event) {
+//   event.preventDefault();
+
+
+//   const userData = {
+//       email: email.val().trim(),
+//       password: password.val().trim(),
+//       firstName: firstName.val().trim(),
+//       lastName: lastName.val().trim()
+
+//   };
+
+//   router.post("/api/signup", userData
+//      ).then(function (data) {
+//       window.location.replace("/login");
+
+//   })
+//       .catch(function (err) {
+//           console.log(err);
+
+//       });
+
+
+
+
+
+
+// });
+
+
+
 export default function SignUp() {
   const classes = useStyles();
 
@@ -124,12 +157,14 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            name="submitReg"
+            
           >
             Sign Up
           </Button>
           <Grid component="main" maxWidth="xs">
             <Grid item>
-              <Link href="/" variant="body2">
+              <Link href="/login" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>

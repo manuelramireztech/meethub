@@ -22,29 +22,7 @@ exports.signup = (req, res) => {
     }
     return res.send({ message: "User was registered successfully!" });
 
-    // if (req.body.roles) {
-    //   Role.find(
-    //     {
-    //       name: { $in: req.body.roles }
-    //     },
-    //     (err, roles) => {
-    //       if (err) {
-    //         res.status(500).send({ message: err });
-    //         return;
-    //       }
-
-    //       user.roles = roles.map(role => role._id);
-    //       user.save(err => {
-    //         if (err) {
-    //           res.status(500).send({ message: err });
-    //           return;
-    //         }
-
-    //         res.send({ message: "User was registered successfully!" });
-    //       });
-    //     }
-    //   );
-    // } 
+  
   });
 };
 
@@ -93,3 +71,31 @@ exports.signin = (req, res) => {
       });
     });
 };
+
+
+
+
+
+  // if (req.body.roles) {
+    //   Role.find(
+    //     {
+    //       name: { $in: req.body.roles }
+    //     },
+    //     (err, roles) => {
+    //       if (err) {
+    //         res.status(500).send({ message: err });
+    //         return;
+    //       }
+
+    //       user.roles = roles.map(role => role._id);
+    //       user.save(err => {
+    //         if (err) {
+    //           res.status(500).send({ message: err });
+    //           return;
+    //         }
+
+    //         res.send({ message: "User was registered successfully!" });
+    //       });
+    //     }
+    //   );
+    // } 
