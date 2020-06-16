@@ -15,7 +15,6 @@ const mongoose = require("mongoose");
 
 
 const User = require("./models/user.model");
-// const routes = require("./src/App");
 
 const dbConfig = require("./config/db.config");
 
@@ -49,34 +48,12 @@ db.mongoose.connect(
     });
 
 
-// function initial() {
-	
-	
-//   User.estimatedDocumentCount( (err, count) => {
-//     if (!err && count === 0) {
-//       new User({
-//         name: "user"
-//       }).save(err => {
-//         if (err) {
-//           console.log("error", err);
-//         }
 
-//         console.log("added 'user' to roles collection");
-//       });
 
-//     }
-//   });
-// }
-
+require("./routes/apiRoutes")(app);
 require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
-require("./routes/apiRoutes")(app);
-// require("./src/App")(app);
 
-
-// app.get("/", (req, res) => {
-// 	res.json({ message: "Welcome Anthony" });
-//   });
 
 if(process.env.NODE_ENV==='production'){
 	app.use(express.static(__dirname+"/build"))
