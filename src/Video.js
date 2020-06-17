@@ -59,7 +59,12 @@ class Video extends Component {
 			messages: [],
 			message: "",
 			newmessages: 0,
+<<<<<<< HEAD
 			askForUsername: true,
+=======
+			// askForUsername: true,
+			// username: faker.internet.Username(),
+>>>>>>> master
 		}
 		connections = {}
 
@@ -591,6 +596,7 @@ class Video extends Component {
 	}
 
 	render() {
+<<<<<<< HEAD
 		return (
 			<div>
 				{this.state.askForUsername === true ?
@@ -614,6 +620,58 @@ class Video extends Component {
 						</div>
 					</div>
 					:
+=======
+		if(this.isChromeOrFirefox() === false){
+			return (
+				<div style={{
+					background: "white", width: "30%", height: "auto", padding: "20px", minWidth: "400px",
+					textAlign: "center", margin: "auto", marginTop: "50px", justifyContent: "center"
+				}}>
+					<h1>Use Chrome or Firefox</h1>
+				</div>
+			)
+		}
+		return (
+			// <div>
+			// 	{this.state.askForUsername === true ?
+			// 		<div>
+			// 			<div style={{
+			// 				background: "#1d1d1d", width: "30%", height: "auto", padding: "20px", minWidth: "400px",
+			// 				textAlign: "center", margin: "auto", marginTop: "50px", justifyContent: "center"
+			// 			}}>
+			// 				<p style={{ margin: 0 }}>Turn Off/On Camera & Mic and GO to meet</p>
+			// 				<Input style={{ marginTop: "20px" }} placeholder="Username" value={this.state.username} onChange={e => this.handleUsername(e)} />
+			// 			</div>
+			// 			<div style={{ justifyContent: "center", textAlign: "center", paddingTop: "10px", marginBottom: "80px" }}>
+			// 				<video id="my-video" ref={this.localVideoref} autoPlay muted style={{
+			// 					borderStyle: "solid",
+			// 					borderColor: "#000",
+			// 					backgroundColor: "#000000",
+			// 						// backgroundImage: "",
+			// 					objectFit: "fill",
+			// 					width: "50%",
+			// 					height: "20%"
+			// 				}}></video>
+			// 				</div>
+			// 				<div className="btn-down" style={{ backgroundColor: "#232323", color: "#232323", textAlign: "center", padding: "10px" }}>
+			// 				<IconButton style={{ color: "#fff", backgroundColor: "#323232", margin: "5px", width:"50px", height:"50px" }} onClick={this.handleVideo}>
+			// 					{(this.state.video === true) ? <VideocamIcon /> : <VideocamOffIcon />}
+			// 				</IconButton>
+
+			// 				<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px", width:"50px", height:"50px" }} onClick={this.handleAudio}>
+			// 					{this.state.audio === true ? <MicIcon /> : <MicOffIcon />}
+			// 				</IconButton>
+
+			// 				<IconButton style={{ color: "#ffffff", backgroundColor: "#5A6BDA", fontSize: "14.7px", margin: "5px", width:"50px", height:"50px" }} onClick={this.connect}>
+			// 					GO
+			// 				</IconButton>
+			// 			</div>
+
+						
+						
+			// 		</div>
+			// 		:
+>>>>>>> master
 					<div>
 						<div className="btn-down" style={{ backgroundColor: "#232323", color: "#232323", textAlign: "center", padding: "10px" }}>
 							<IconButton style={{ color: "#fff", backgroundColor: "#323232", margin: "5px", width:"50px", height:"50px" }} onClick={this.handleVideo}>
@@ -668,6 +726,10 @@ class Video extends Component {
 								<video id="my-video" ref={this.localVideoref} autoPlay muted style={{
 									borderStyle: "solid",
 									borderColor: "#000",
+<<<<<<< HEAD
+=======
+							        // backgroundImage: "url(https://dimensionus.com/wp-content/uploads/2017/07/user-avatar-dark.jpg)",
+>>>>>>> master
 									margin: "10px",
 									objectFit: "fill",
 									width: "60%",
@@ -677,8 +739,13 @@ class Video extends Component {
 						</div>
 					</div>
 					
+<<<<<<< HEAD
 				}
 			</div>
+=======
+				// }
+			// </div>
+>>>>>>> master
 		)
 	}
 }

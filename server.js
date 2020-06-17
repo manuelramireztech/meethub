@@ -5,17 +5,26 @@ const server = require("http").Server(app);
 const io = require("socket.io")(server);
 
 const PORT = process.env.PORT || 5000;
+<<<<<<< HEAD
 server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
 
 const http = require('http');
 var cors = require('cors');
+=======
+
+
+const http = require('http');
+var cors = require('cors');
+
+>>>>>>> master
 const bodyParser = require('body-parser');
 const path = require("path");
 const mongoose = require("mongoose");
 
-var server = http.createServer(app);
-var io = require('socket.io')(server);
-const User = require("./src/models/user.model");
+
+const User = require("./models/user.model");
+
+const dbConfig = require("./config/db.config");
 
 const corsOptions = {
 	origin: "http://localhost:8081"
@@ -25,70 +34,34 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const db = require("./src/models");
-const Role = db.role;
+const db = require("./models");
 
 
-db.mongoose
-  .connect(`mongodb://localhost/meetHubUsers_db`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => {
-    console.log("Successfully connect to MongoDB.");
-    initial();
-  })
-  .catch(err => {
-    console.error("Connection error", err);
-    process.exit();
-  });
 
-
-function initial() {
-	console.log(Role);
-	
-  Role.estimatedDocumentCount( (err, count) => {
-    if (!err && count === 0) {
-      new Role({
-        name: "user"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'user' to roles collection");
-      });
-
-      new Role({
-        name: "moderator"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'moderator' to roles collection");
-      });
-
-      new Role({
-        name: "admin"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'admin' to roles collection");
-      });
+db.mongoose.connect(
+    process.env.MONGODB_URI || `mongodb://${dbConfig.HOST}/${dbConfig.DB}`,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
     }
-  });
-}
+)
+    .then(() => {
+    console.log("sucessfully connect to MongoDB");
 
+    })
+    .catch(err => {
+    console.log("connection error", err);
+     process.exit();
+
+    });
+
+
+
+
+require("./routes/apiRoutes")(app);
 require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
 
-
-app.get("/", (req, res) => {
-	res.json({ message: "Welcome to bezkoder application." });
-  });
 
 if(process.env.NODE_ENV==='production'){
 	app.use(express.static(__dirname+"/build"))
@@ -96,7 +69,7 @@ if(process.env.NODE_ENV==='production'){
 		res.sendFile(path.join(__dirname+"/build/index.html"))
 	})
 }
-app.set('port', (process.env.PORT || 3000))
+app.set('port', (process.env.PORT || 3001))
 
 
 connections = {}

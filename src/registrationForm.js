@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+import React, { useRef } from 'react';
+import { Redirect } from 'react-router-dom';
+>>>>>>> master
 import IconButton from '@material-ui/core/IconButton';
 import Duo from '@material-ui/icons/Duo';
 import Button from '@material-ui/core/Button';
@@ -11,6 +16,11 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import "./registrationForm.css";
+<<<<<<< HEAD
+=======
+// import validator from 'validator';
+import API from './utils/API';
+>>>>>>> master
 
 function Copyright() {
   return (
@@ -45,21 +55,48 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+
+export default function SignUp({ history }) {
   const classes = useStyles();
+  const formRef = useRef(null);
+
+  const handleSubmitRegistration = (event) => {
+    const formData = formRef.current;
+    event.preventDefault();
+    const user = {
+      firstName: formData.firstName.value,
+      lastName: formData.lastName.value,
+      userName: formData.userName.value,
+      email: formData.email.value,
+      password: formData.password.value
+    }
+
+    API.registerUser(user).then(({ data }) => {
+      history.push("/")
+    })
+  }
+
+  
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+<<<<<<< HEAD
       <h1 style={{ fontSize: "45px", marginBottom: "20px" , marginTop: "40px" }}><IconButton style={{ color: "#ffffff",fontSize: "45px !important", backgroundColor: "#5867dd"}}>
 					<Duo />
 					</IconButton> meethub</h1>
 					<p style={{ fontWeight: "200" }}>Video call application with react and node.</p>
+=======
+      <h1 style={{ fontSize: "45px", marginBottom: "20px", marginTop: "40px" }}><IconButton style={{ color: "#ffffff", fontSize: "45px !important", backgroundColor: "#5867dd" }}>
+        <Duo />
+      </IconButton> meethub</h1>
+      <p style={{ fontWeight: "200" }}>Video call application with react and node.</p>
+>>>>>>> master
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form ref={formRef} className={classes.form} noValidate onSubmit={handleSubmitRegistration}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -93,7 +130,7 @@ export default function SignUp() {
                 label="Username"
                 name="userName"
               />
-            </Grid>  
+            </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="filled"
@@ -124,6 +161,9 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            name="submitReg"
+
+
           >
             Sign Up
           </Button>

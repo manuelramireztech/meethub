@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+import React, { useRef } from 'react';
+>>>>>>> master
 import IconButton from '@material-ui/core/IconButton';
 import Duo from '@material-ui/icons/Duo';
 import Button from '@material-ui/core/Button';
@@ -13,6 +17,11 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import "./loginForm.css";
+<<<<<<< HEAD
+=======
+import API from './utils/API';
+
+>>>>>>> master
 
 function Copyright() {
   return (
@@ -28,7 +37,11 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> master
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -49,14 +62,40 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     color: "primary"
   },
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> master
 }));
 
-export default function SignIn() {
+
+export default function SignIn({ history }) {
   const classes = useStyles();
+  const formRef = useRef(null);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const formData = formRef.current;
+    const userLogin = {
+      email: formData.email.value,
+      password: formData.password.value
+    }
+    API.loginUser(userLogin).then(({ data }) => {
+      history.push("/Home")
+      console.log(data);
+
+    })
+      .catch(( data ) => {
+        console.log(data);
+        alert("Email or password is invalid");
+
+      });
+  }
 
   return (
     <Container component="main" maxWidth="xs">
+<<<<<<< HEAD
     <CssBaseline />
     <h1 style={{ fontSize: "45px", marginBottom: "20px" , marginTop: "40px" }}><IconButton style={{ color: "#ffffff",fontSize: "45px !important", backgroundColor: "#5867dd"}}>
         <Duo />
@@ -64,10 +103,19 @@ export default function SignIn() {
         <p style={{ fontWeight: "200" }}>Video call application with react and node.</p>
     <div className={classes.paper}>
         
+=======
+      <CssBaseline />
+      <h1 style={{ fontSize: "45px", marginBottom: "20px", marginTop: "40px" }}><IconButton style={{ color: "#ffffff", fontSize: "45px !important", backgroundColor: "#5867dd" }}>
+        <Duo />
+      </IconButton> meethub</h1>
+      <p style={{ fontWeight: "200" }}>Video call application with react and node.</p>
+      <div className={classes.paper}>
+
+>>>>>>> master
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form ref={formRef} className={classes.form} noValidate onSubmit={handleLogin}>
           <TextField
             variant="filled"
             margin="normal"
@@ -91,7 +139,11 @@ export default function SignIn() {
             autoComplete="current-password"
           />
           <FormControlLabel
+<<<<<<< HEAD
             control={<Checkbox value="remember" color="white" style ={{
+=======
+            control={<Checkbox value="remember" color="white" style={{
+>>>>>>> master
               color: "#ffffff",
             }} />}
             label="Remember me"
