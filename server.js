@@ -1,14 +1,20 @@
 const fs = require('fs');
-const http = require('http');
-const express = require('express');
-var cors = require('cors');
+const express = require("express");
 const app = express();
+const server = require("http").Server(app);
+const io = require("socket.io")(server);
+
+const PORT = process.env.PORT || 5000;
+
+
+const http = require('http');
+var cors = require('cors');
+
 const bodyParser = require('body-parser');
 const path = require("path");
 const mongoose = require("mongoose");
 
-var server = http.createServer(app);
-var io = require('socket.io')(server);
+
 const User = require("./models/user.model");
 
 const dbConfig = require("./config/db.config");
@@ -43,32 +49,12 @@ db.mongoose.connect(
     });
 
 
-// function initial() {
-	
-	
-//   User.estimatedDocumentCount( (err, count) => {
-//     if (!err && count === 0) {
-//       new User({
-//         name: "user"
-//       }).save(err => {
-//         if (err) {
-//           console.log("error", err);
-//         }
 
-//         console.log("added 'user' to roles collection");
-//       });
 
-//     }
-//   });
-// }
-
+require("./routes/apiRoutes")(app);
 require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
 
-
-app.get("/", (req, res) => {
-	res.json({ message: "Welcome Anthony" });
-  });
 
 if(process.env.NODE_ENV==='production'){
 	app.use(express.static(__dirname+"/build"))
@@ -76,7 +62,7 @@ if(process.env.NODE_ENV==='production'){
 		res.sendFile(path.join(__dirname+"/build/index.html"))
 	})
 }
-app.set('port', (process.env.PORT || 3000))
+app.set('port', (process.env.PORT || 3001))
 
 
 connections = {}
