@@ -7,20 +7,22 @@ const bcrypt = require("bcryptjs");
 exports.signup = (req, res) => {
   const user = new User({
     firstName: req.body.firstName,
-    lastname: req.body.lastname,
-    username: req.body.username, 
+    lastName: req.body.lastName,
+    userName: req.body.userName,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8)
   });
 
   user.save((err, user) => {
+
     if (err) {
-      res.status(500).send({ message: "NOT GOING THRU!!" });
-      return;
+      console.log(err);
+      return res.status(500).send({ message: "NOT GOING THRU!!" });
+
     }
     return res.send({ message: "User was registered successfully!" });
 
-  
+
   });
 };
 
@@ -30,12 +32,13 @@ exports.signin = (req, res) => {
   })
     .exec((err, user) => {
       if (err) {
+        console.log(err);
         res.status(500).send({ message: err });
         return;
       }
 
       if (!user) {
-        return res.status(404).send({ message: "User Not found." });
+        return res.status(401).send({ message: "Email or password is invalid" });
       }
 
       const passwordIsValid = bcrypt.compareSync(
@@ -44,10 +47,7 @@ exports.signin = (req, res) => {
       );
 
       if (!passwordIsValid) {
-        return res.status(401).send({
-          accessToken: null,
-          message: "Invalid Password!"
-        });
+        return res.status(401).send({ message: "Email or password is invalid" });
       }
 
       const token = jwt.sign({ id: user.id }, config.secret, {

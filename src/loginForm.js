@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function SignIn({history}) {
+export default function SignIn({ history }) {
   const classes = useStyles();
   const formRef = useRef(null);
 
@@ -66,9 +66,16 @@ export default function SignIn({history}) {
       email: formData.email.value,
       password: formData.password.value
     }
-    API.loginUser(userLogin).then(({data}) => {
+    API.loginUser(userLogin).then(({ data }) => {
       history.push("/Home")
+      console.log(data);
+
     })
+      .catch(( data ) => {
+        console.log(data);
+        alert("Email or password is invalid");
+
+      });
   }
 
   return (
