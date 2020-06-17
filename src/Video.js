@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import io from 'socket.io-client';
-import faker from "faker";
+import io from "socket.io-client";
 
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
+import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 import { Input, Button } from '@material-ui/core';
 import VideocamIcon from '@material-ui/icons/Videocam';
 import VideocamOffIcon from '@material-ui/icons/VideocamOff';
@@ -60,7 +60,6 @@ class Video extends Component {
 			message: "",
 			newmessages: 0,
 			askForUsername: true,
-			username: faker.internet.Username(),
 		}
 		connections = {}
 
@@ -422,7 +421,7 @@ class Video extends Component {
 								video.style.setProperty("height", height)
 								video.style.margin = "10px"
 								video.style.borderStyle = "solid"
-								video.style.borderColor = "#bdbdbd"
+								video.style.borderColor = "#000"
 								video.style.objectFit = "fill"
 
 								video.setAttribute('data-socket', socketListId);
@@ -563,7 +562,7 @@ class Video extends Component {
 			textArea.select()
 			try {
 				document.execCommand('copy')
-				message.success("Link was copied to share!")
+				message.success("Link copied to clipboard!")
 			} catch (err) {
 				message.error("Failed to copy")
 			}
@@ -571,7 +570,7 @@ class Video extends Component {
 			return
 		}
 		navigator.clipboard.writeText(text).then(function () {
-			message.success("Link was copied to share!")
+			message.success("Link copied to clipboard!")
 		}, function (err) {
 			message.error("Failed to copy")
 		})
@@ -591,43 +590,23 @@ class Video extends Component {
 		})
 	}
 
-	isChromeOrFirefox = function() {
-		var userAgent = (navigator && navigator.userAgent || '').toLowerCase()
-		var vendor = (navigator && navigator.vendor || '').toLowerCase()
-		var matchChrome = /google inc/.test(vendor) ? userAgent.match(/(?:chrome|crios)\/(\d+)/) : null
-		var matchFirefox = userAgent.match(/(?:firefox|fxios)\/(\d+)/)
-		return matchChrome !== null || matchFirefox !== null
-	}
-
 	render() {
-		
-		if (this.isChromeOrFirefox() === false) {
-			return (
-				<div style={{
-					background: "white", width: "30%", height: "auto", padding: "20px", minWidth: "400px",
-					textAlign: "center", margin: "auto", marginTop: "50px", justifyContent: "center"
-				}}>
-					<h1>Use Chrome or Firefox</h1>
-				</div>
-			)
-		}
 		return (
 			<div>
 				{this.state.askForUsername === true ?
 					<div>
 						<div style={{
-							background: "#232323", width: "30%", height: "auto", padding: "20px", minWidth: "400px",
+							background: "#1d1d1d", width: "30%", height: "auto", padding: "20px", minWidth: "400px",
 							textAlign: "center", margin: "auto", marginTop: "50px", justifyContent: "center"
 						}}>
-							<p style={{ margin: 0, paddingRight: "50px" }}>Set your username</p>
-							<Input placeholder="Username" value={this.state.username} onChange={e => this.handleUsername(e)} />
-							<Button variant="contained" color="primary" onClick={this.connect} style={{ margin: "20px" }}>Connect</Button>
+							
+							<Button variant="contained" color="primary" onClick={this.connect} style={{ margin: "20px" }}>Connect Now!</Button>
 						</div>
 
 						<div style={{ justifyContent: "center", textAlign: "center", paddingTop: "40px" }}>
 							<video id="my-video" ref={this.localVideoref} autoPlay muted style={{
 								borderStyle: "solid",
-								borderColor: "#121212",
+								borderColor: "#000",
 								objectFit: "fill",
 								width: "60%",
 								height: "30%"
@@ -636,40 +615,40 @@ class Video extends Component {
 					</div>
 					:
 					<div>
-						<div className="btn-down" style={{ backgroundColor: "#232323", color: "#232323", textAlign: "center" }}>
-							<IconButton style={{ color: "#fff", backgroundColor: "#323232", margin: "5px" }} onClick={this.handleVideo}>
+						<div className="btn-down" style={{ backgroundColor: "#232323", color: "#232323", textAlign: "center", padding: "10px" }}>
+							<IconButton style={{ color: "#fff", backgroundColor: "#323232", margin: "5px", width:"50px", height:"50px" }} onClick={this.handleVideo}>
 								{(this.state.video === true) ? <VideocamIcon /> : <VideocamOffIcon />}
 							</IconButton>
 
-							<IconButton style={{ color: "#ffffff", backgroundColor: "#da3c3f", margin: "5px" }} onClick={this.handleEndCall}>
+							<IconButton style={{ color: "#ffffff", backgroundColor: "#da3c3f", margin: "5px", width:"50px", height:"50px" }} onClick={this.handleEndCall}>
 								<CallEndIcon />
 							</IconButton>
 
-							<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px" }} onClick={this.handleAudio}>
+							<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px", width:"50px", height:"50px" }} onClick={this.handleAudio}>
 								{this.state.audio === true ? <MicIcon /> : <MicOffIcon />}
 							</IconButton>
 
 							{this.state.screenAvailable === true ?
-								<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px" }} onClick={this.handleScreen}>
+								<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px", width:"50px", height:"50px" }} onClick={this.handleScreen}>
 									{this.state.screen === true ? <ScreenShareIcon /> : <StopScreenShareIcon />}
 								</IconButton>
 								: null}
 
 							<Badge badgeContent={this.state.newmessages} max={999} color="secondary" onClick={this.openChat}>
-								<IconButton style={{ color: "#ffffff", backgroundColor: "#323232"  }} onClick={this.openChat}>
+								<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px", width:"50px", height:"50px"  }} onClick={this.openChat}>
 									<ChatIcon />
 								</IconButton>
 							</Badge>
-							<IconButton style={{ color: "#ffffff", backgroundColor: "#323232", margin: "5px" }} onClick={this.copyUrl}>
+							<IconButton style={{ color: "#ffffff", backgroundColor: "#5a6bda", margin: "5px", width:"50px", height:"50px" }} onClick={this.copyUrl}>
 								<FileCopy />
 							</IconButton>
 						</div>
 
 						<Modal show={this.state.showModal} onHide={this.closeChat} style={{ zIndex: "999999", color: "#121212" }}>
 							<Modal.Header closeButton>
-								<Modal.Title>Chat Room</Modal.Title>
+								<Modal.Title>GROUP CHAT</Modal.Title>
 							</Modal.Header>
-							<Modal.Body style={{ overflow: "auto", color: "#121212", overflowY: "auto", height: "400px" }} >
+							<Modal.Body style={{ overflow: "auto", overflowY: "auto", height: "400px" }} >
 								{this.state.messages.length > 0 ? this.state.messages.map((item, index) => (
 									<div key={item.sender + item.data + index}>
 										<b>{item.sender}</b>
@@ -678,18 +657,17 @@ class Video extends Component {
 								)) : <p>No message yet</p>}
 							</Modal.Body>
 							<Modal.Footer className="div-send-msg">
-								<Input placeholder="Message" value={this.state.message} onChange={e => this.handleMessage(e)} />
-								<Button variant="contained" color="primary" onClick={this.sendMessage}>Send</Button>
-							</Modal.Footer>
+						<Input style={{ color: "#ffffff" }} placeholder="Type here..." value={this.state.message} onChange={e => this.handleMessage(e)} />
+						<IconButton style={{ color: "#ffffff", backgroundColor: "#5867dd", margin: "0 10px 0 10px" }} onClick={this.sendMessage}>
+					<ArrowForwardIos />
+					</IconButton>
+					</Modal.Footer>
 						</Modal>
-
 						<div className="container">
-						
-
 							<Row id="main" className="flex-container" style={{ margin: 0, padding: 0 }}>
 								<video id="my-video" ref={this.localVideoref} autoPlay muted style={{
 									borderStyle: "solid",
-									borderColor: "#121212",
+									borderColor: "#000",
 									margin: "10px",
 									objectFit: "fill",
 									width: "60%",
@@ -698,6 +676,7 @@ class Video extends Component {
 							</Row>
 						</div>
 					</div>
+					
 				}
 			</div>
 		)
