@@ -2,7 +2,6 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/FullStackForce)
 
-![FullStackForce](budget.png)
 ## Despcription
   Meet hub is a video call application that will allow
  users to video chat, screenshare, and message each other.
