@@ -20,11 +20,11 @@ body {
 	font-family: 'Poppins', sans-serif;
 }
 
-#my-video {
+/* #my-video {
+    background: #fff !important;
 	color: #ffffff !important;
-    font-family: 'Poppins', sans-serif;
-    border-color: black;
-}
+	font-family: 'Poppins', sans-serif;
+} */
 
 
 .modal-content, .modal-header, .modal-footer  {
@@ -86,6 +86,13 @@ body {
     bottom: 0px;
     width: 100%;
     height: auto;
+}
+
+.MuiInput-underline,
+.MuiInput-underline:focus,
+.MuiInput-underline:active,
+.MuiInput-underline:hover {
+  border-bottom: 1px solid #5867dd !important;
 }
 
 *:focus {
