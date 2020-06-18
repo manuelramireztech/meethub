@@ -40,9 +40,9 @@ class Home extends Component {
 					<h1 style={{ fontSize: "45px", marginBottom: "20px" , marginTop: "20px" }}><IconButton style={{ color: "#ffffff",fontSize: "45px !important", backgroundColor: "#5867dd"}}>
 					<Duo />
 					</IconButton> meethub</h1>
-					<p style={{ fontWeight: "200" }}>Video call application with react and node.</p>
+					<p style={{ fontWeight: "200" }}>Peer to Peer Video call application.</p>
 				</div>
-				<p style={{ fontWeight: "200", marginTop: "50px" }}>Hello! "USERNAME"</p>
+				<p style={{ fontWeight: "200", marginTop: "50px" }}>Welcome to MeetHub!</p>
 
 				<div style={{
 					background: "#1d1d1d", color:"#fff", width: "30%", height: "auto", padding: "20px", minWidth: "200px",
