@@ -1,9 +1,9 @@
-# MEETHUB
+# meethub
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/FullStackForce)
 
 ## Despcription
-  Meet hub is a video call application that will allow
+  meethub is a video call application that will allow
  users to video chat, screenshare, and message each other.
 
  ![FullStackForce](https://i.postimg.cc/43QV56Sq/meethub01.png)
