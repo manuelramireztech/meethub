@@ -1,16 +1,16 @@
 # meethub
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/TheRockStack)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/FullStackable)
 
 ## Despcription
   meethub is a video call application that will allow
  users to video chat, screenshare, and message each other.
 
- ![TheRockStack](https://i.postimg.cc/43QV56Sq/meethub01.png)
+ ![FullStackable](https://i.postimg.cc/43QV56Sq/meethub01.png)
 
-  ![TheRockStack](https://i.postimg.cc/jSz7x6t2/meethub02.png)
+  ![FullStackable](https://i.postimg.cc/jSz7x6t2/meethub02.png)
 
-![TheRockStack](https://i.postimg.cc/zf7HWJL1/meethub03.png)
+![FullStackable](https://i.postimg.cc/zf7HWJL1/meethub03.png)
 
 ## Table of Contents
 * [Installation](#installation) 
@@ -57,7 +57,7 @@ This project is licensed under the MIT license.
   
 ## Contributing
 ​
-[TheRockStack]('https://github.com/TheRockStack') 
+[FullStackable]('https://github.com/FullStackable') 
 [Anthony-G89]('https://github.com/Anthony-G89')
 [siryaw]('https://github.com/siryaw')
 
@@ -69,4 +69,4 @@ If you like feel free to use it 😊, remember, sharing is to keep growing like 
 ​
 <img src="https://avatars1.githubusercontent.com/u/7883863?v=4" alt="avatar" style="border-radius: 16px" width="30" />
 
-If you have any questions about the repo, open an issue or contact [TheRockStack](https://github.com/TheRockStack) directly at .
+If you have any questions about the repo, open an issue or contact [FullStackable](https://github.com/FullStackable) directly at .
